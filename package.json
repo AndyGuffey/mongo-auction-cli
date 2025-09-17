@@ -1,0 +1,22 @@
+{
+  "name": "mission-05",
+  "version": "1.0.0",
+  "description": "m5 CLI",
+  "license": "ISC",
+  "author": "AG",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node commands.js seed",
+    "add": "node commands.js add",
+    "delete": "node commands.js delete",
+    "start": "node commands.js"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.1",
+    "conf": "^14.0.0",
+    "inquirer": "^12.9.6",
+    "mongoose": "^8.18.1"
+  }
+}
