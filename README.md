@@ -57,7 +57,7 @@ Each auction item contains the following fields:
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### 🔹 Seed the Database
 
@@ -126,7 +126,7 @@ node commands.js
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Node.js
 - MongoDB & Mongoose
@@ -137,7 +137,7 @@ node commands.js
 
 ---
 
-## 🔍 Checking Results in MongoDB Compass
+## Checking Results in MongoDB Compass
 
 After running **seed**, **add**, or **delete** commands, you can verify changes in MongoDB Compass:
 
