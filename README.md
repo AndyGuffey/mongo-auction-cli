@@ -1,6 +1,6 @@
 # Auction Database CLI Tool
 
-A command-line interface tool for seeding and managing auction item data in a MongoDB database.
+A tool for managing auction item data in MongoDB with both CLI and API interfaces.
 
 ---
 
@@ -8,9 +8,10 @@ A command-line interface tool for seeding and managing auction item data in a Mo
 
 This CLI tool allows team members to easily:
 
-- Seed MongoDB with sample auction items
-- Clear existing data from the database
-- _(More functionality to be added)_
+- Seed MongoDB with sample auction items (CLI)
+- Add and delete auction items (CLI)
+- Search for items using various criteria (API)
+- Find similar items (API)
 
 Each auction item contains the following fields:
 
@@ -57,7 +58,68 @@ Each auction item contains the following fields:
 
 ---
 
-## Usage
+## Global Installation
+
+You can optionally install this CLI tool globally to use the commands from any directory on your system.
+
+### Option 1: Install directly from the repository
+
+```bash
+# Clone the repository
+git clone https://github.com/AndyGuffey/mongo-auction-cli.git
+cd mission-05
+
+# Install globally
+npm install -g .
+```
+
+### Option 2: If you've already cloned the repository
+
+```bash
+# Navigate to the project directory
+cd path/to/mission-05
+
+# Install globally
+npm install -g .
+```
+
+### Using the global commands
+
+Once installed globally, you can run these commands from any directory:
+
+```bash
+auction seed    # Seed the database with sample items
+auction add     # Add a new auction item
+auction delete  # Delete an auction item
+```
+
+This makes it easier to manage your auction database without needing to navigate to the project directory each time.
+
+To uninstall the global command:
+
+```bash
+npm uninstall -g mission-05
+```
+
+---
+
+## CLI Usage
+
+### Using from project directory:
+
+```bash
+npm run seed
+npm run add
+npm run delete
+```
+
+### Using global commands (after global installation):
+
+```bash
+auction seed
+auction add
+auction delete
+```
 
 ### 🔹 Seed the Database
 
@@ -126,11 +188,79 @@ node commands.js
 
 ---
 
+## API Usage
+
+Start the API server:
+
+```bash
+npm run server  # Standard mode
+npm run dev     # Development mode with auto-restart
+```
+
+### 🔸 Base URL
+
+```bash
+http://localhost:3000/
+```
+
+### 🔸 Get All Items
+
+Retrieve all auction items from the database
+
+```bash
+GET http://localhost:3000/api/items
+```
+
+Example Response:
+
+```bash
+[
+  {
+    "_id": "65f583a7c390d3e426a6b8b1",
+    "title": "Surfboard",
+    "description": "The best surfboard ever",
+    "start_price": 100,
+    "reserve_price": 500
+  },
+  ...
+]
+```
+
+### 🔸 Search by Keywords
+
+Search for items using text search across title and description.
+
+```bash
+GET http://localhost:3000/api/items/search?query=surfboard
+```
+
+### 🔸 Search by Price Range
+
+Find items within a specific price range.
+
+```bash
+GET http://localhost:3000/api/items/price?min=100&max=600
+GET http://localhost:3000/api/items/price?min=500
+GET http://localhost:3000/api/items/price?max=200
+```
+
+### 🔸 Find Similar Items
+
+Discover items similar to a specific item based on text similarity.
+
+```bash
+GET http://localhost:3000/api/items/similar/65f583a7c390d3e426a6b8b1
+```
+
+---
+
 ## Technologies Used
 
 - Node.js
 - MongoDB & Mongoose
 - Commander.js _(for CLI commands)_
+- Express.js _(for API server)_
+- CORS _(for API access control)_
 - Chalk _(for colored console output)_
 - Inquirer _(for interactive prompts)_
 - ES Modules
@@ -153,7 +283,7 @@ After running **seed**, **add**, or **delete** commands, you can verify changes 
 
 ## 🚧 Future Enhancements
 
-- Add commands to search for items by keywords
-- Implement item updating functionality
-- Develop an API for retrieving similar auction items
-- Add pagination for listing large collections of items
+- Add complete CRUD operations to the API
+- Implement authentication for secure API access
+- Add pagination for large result sets
+- Integrate advanced AI-assisted search capabilities
