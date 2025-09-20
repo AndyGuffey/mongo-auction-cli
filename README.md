@@ -58,7 +58,68 @@ Each auction item contains the following fields:
 
 ---
 
+## Global Installation
+
+You can optionally install this CLI tool globally to use the commands from any directory on your system.
+
+### Option 1: Install directly from the repository
+
+```bash
+# Clone the repository
+git clone https://github.com/AndyGuffey/mongo-auction-cli.git
+cd mission-05
+
+# Install globally
+npm install -g .
+```
+
+### Option 2: If you've already cloned the repository
+
+```bash
+# Navigate to the project directory
+cd path/to/mission-05
+
+# Install globally
+npm install -g .
+```
+
+### Using the global commands
+
+Once installed globally, you can run these commands from any directory:
+
+```bash
+auction seed    # Seed the database with sample items
+auction add     # Add a new auction item
+auction delete  # Delete an auction item
+```
+
+This makes it easier to manage your auction database without needing to navigate to the project directory each time.
+
+To uninstall the global command:
+
+```bash
+npm uninstall -g mission-05
+```
+
+---
+
 ## CLI Usage
+
+### Using from project directory:
+
+```bash
+npm run seed
+npm run add
+npm run delete
+```
+
+### Using global commands (after global installation):
+
+```bash
+auction seed
+auction add
+auction delete
+```
 
 ### 🔹 Seed the Database
 

@@ -6,6 +6,9 @@
   "author": "AG",
   "type": "module",
   "main": "index.js",
+  "bin": {
+    "auction": "./bin/auction.js"
+  },
   "scripts": {
     "seed": "node commands.js seed",
     "add": "node commands.js add",
